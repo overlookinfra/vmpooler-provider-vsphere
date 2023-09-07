@@ -1113,11 +1113,8 @@ module Vmpooler
                     break
                   end
                   run_select_hosts(pool_name, @provider_hosts)
-                  if vm_in_target?(pool_name, vm_hash['host_name'], vm_hash['architecture'], @provider_hosts)
-                    logger.log('s', "[ ] [#{pool_name}] No migration required for '#{vm_name}' running on #{vm_hash['host_name']}")
-                  else
-                    migrate_vm_to_new_host(pool_name, vm_name, vm_hash, connection)
-                  end
+                  migrate_vm_to_new_host(pool_name, vm_name, vm_hash, connection)
+                  
                 else
                   logger.log('s', "[ ] [#{pool_name}] '#{vm_name}' is running on #{vm_hash['host_name']}")
                 end
