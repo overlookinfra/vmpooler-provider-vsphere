@@ -1241,7 +1241,7 @@ module Vmpooler
             events = event_manager.QueryEvents(filter: event_filter_spec)
           end
           # convert events to json, include only the fullFormattedMessage
-          messages = events.map { |e| e.fullFormattedMessage }
+          messages = events.map(&:fullFormattedMessage)
           JSON.generate(messages)
         end
       end
